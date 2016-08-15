@@ -15,4 +15,4 @@
 //    return view('welcome');
 //});
 
-Route::resource('/', 'CobrancaController');
+Route::resource('/', 'TituloController');

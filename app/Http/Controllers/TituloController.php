@@ -2,11 +2,12 @@
 
 namespace FlCobrancas\Http\Controllers;
 
+use FlCobrancas\Titulo;
 use Illuminate\Http\Request;
 
 use FlCobrancas\Http\Requests;
 
-class CobrancaController extends Controller
+class TituloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,9 @@ class CobrancaController extends Controller
     public function index()
     {
         $data['title'] = 'Home';
+        $data['titulos'] = Titulo::all();
 
-        return view('cobranca.index', $data);
+        return view('titulo.index', $data);
     }
 
     /**
