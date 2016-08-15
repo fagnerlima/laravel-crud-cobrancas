@@ -8,7 +8,7 @@
     <div class="panel panel-default">
         <div class="panel-heading clearfix">
             <h1 class="panel-title pull-left">Títulos</h1>
-            <a href="#" class="pull-right">
+            <a href="{{url('titulos/create')}}" class="pull-right txt-dec-none">
                 <span class="glyphicon glyphicon-plus"></span> Novo título
             </a>
         </div>

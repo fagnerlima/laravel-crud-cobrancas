@@ -11,8 +11,8 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return redirect('titulos');
+});
 
-Route::resource('/', 'TituloController');
+Route::resource('titulos', 'TituloController');

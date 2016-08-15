@@ -29,7 +29,9 @@ class TituloController extends Controller
      */
     public function create()
     {
-        //
+        $data['title'] = 'Cadastro de Título';
+
+        return view('titulo.create', $data);
     }
 
     /**
