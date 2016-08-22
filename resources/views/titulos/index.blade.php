@@ -51,7 +51,7 @@
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </a>
                                 @endif
-                                <a href="#" class="btn btn-link btn-xs" title="Editar">
+                                <a href="{{route('titulos.edit', ['id' => $titulo->id])}}" class="btn btn-link btn-xs" title="Editar">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                                 <a href="#" class="btn btn-link btn-xs" title="Excluir">

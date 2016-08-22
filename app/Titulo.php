@@ -42,7 +42,7 @@ class Titulo extends Model
      */
     public function getValorAttribute($value)
     {
-        return 'R$ ' . number_format($value, 2, ',', '.');
+        return number_format($value, 2, ',', '.');
     }
 
     public function setValorAttribute($value)

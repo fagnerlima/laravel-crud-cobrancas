@@ -4,7 +4,6 @@ $(function () {
         //'prefix': 'R$ ',
         'thousands': '.',
         'decimal': ',',
-        'allowZero': true,
         'affixesStay': false
     });
 
