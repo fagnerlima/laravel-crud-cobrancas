@@ -14,6 +14,12 @@
         </div>
 
         <div class="panel-body">
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    <p>{{Session::get('success')}}</p>
+                </div>
+            @endif
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>

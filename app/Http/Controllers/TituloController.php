@@ -2,10 +2,9 @@
 
 namespace FlCobrancas\Http\Controllers;
 
+use FlCobrancas\Http\Requests;
 use FlCobrancas\Titulo;
 use Illuminate\Http\Request;
-
-use FlCobrancas\Http\Requests;
 
 class TituloController extends Controller
 {
@@ -17,9 +16,9 @@ class TituloController extends Controller
     public function index()
     {
         $data['title'] = 'Home';
-        $data['titulos'] = Titulo::all();
+        $data['titulos'] = Titulo::orderBy('id')->get();
 
-        return view('titulo.index', $data);
+        return view('titulos.index', $data);
     }
 
     /**
@@ -31,18 +30,21 @@ class TituloController extends Controller
     {
         $data['title'] = 'Cadastro de Título';
 
-        return view('titulo.create', $data);
+        return view('titulos.create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \FlCobrancas\Http\Requests\TituloRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\TituloRequest $request)
     {
-        //
+        Titulo::create($request->all());
+        $request->session()->flash('success', 'Título cadastrado com sucesso.');
+
+        return redirect()->route('titulos.index');
     }
 
     /**
