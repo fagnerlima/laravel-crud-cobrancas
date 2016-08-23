@@ -46,14 +46,14 @@
                             <td>{{$titulo->descricao}}</td>
                             <td class="text-center">{{$titulo->data_vencimento}}</td>
                             <td class="text-right">R$ {{$titulo->valor}}</td>
-                            <td class="text-center">
+                            <td class="text-center" data-status="{{$titulo->id}}">
                                 <span class="label {{$titulo->status == 'RECEBIDO' ? 'label-success' : 'label-danger'}} label-success">
                                     {{$titulo->status}}
                                 </span>
                             </td>
                             <td class="text-center">
                                 <!-- Editar -->
-                                <a href="{{route('titulos.edit', ['id' => $titulo->id])}}" class="btn btn-link btn-xs" title="Editar">
+                                <a href="{{route('titulos.edit', $titulo->id)}}" class="btn btn-link btn-xs" title="Editar">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                                 <!-- Excluir -->
@@ -62,7 +62,7 @@
                                 </a>
                                 @if($titulo->status == 'PENDENTE')
                                     <!-- Receber -->
-                                    <a href="#" class="btn btn-link btn-xs" title="Receber">
+                                    <a href="{{route('titulos.receive', $titulo->id)}}" class="btn btn-link btn-xs receber-titulo" title="Receber" data-id="{{$titulo->id}}" data-token="{{csrf_token()}}">
                                         <span class="glyphicon glyphicon-check"></span>
                                     </a>
                                 @endif

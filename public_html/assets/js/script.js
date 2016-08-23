@@ -2,9 +2,9 @@ $(function () {
     // MaskMoney
     $('.currency').maskMoney({
         //'prefix': 'R$ ',
-        'thousands': '.',
-        'decimal': ',',
-        'affixesStay': false
+        thousands: '.',
+        decimal: ',',
+        affixesStay: false
     });
 
     // DatePicker
@@ -40,6 +40,33 @@ $(function () {
             baseUrl += '/';
 
         form.attr('action', baseUrl + id);
-        modal.find('.modal-body span').html('Tem certeza que deseja excluir o título <b>' + id + '</b> (<b>' + descricao + '</b>)?');
+        modal.find('.modal-body span').html('Tem certeza que deseja excluir o título <b>' + id + '</b>?');
+    });
+
+    // Recebimento de título
+    $('.receber-titulo').click(function (event) {
+        event.preventDefault();
+
+        var buttonReceive = $(this);
+        var urlReceive = buttonReceive.attr('href');
+        var csrfToken = buttonReceive.data('token');
+
+        var response = $.ajax({
+            url: urlReceive,
+            type: 'PUT',
+            headers: {
+                'X-CSRF-Token': csrfToken
+            }
+        });
+
+        response.done(function (event) {
+            var id = buttonReceive.data('id');
+            $('[data-status = ' + id + ']').html('<span class="label label-success">' + event + '</span>');
+            buttonReceive.hide();
+        });
+
+        response.fail(function (event) {
+            alert('Falha no recebimento do título.');
+        });
     });
 });

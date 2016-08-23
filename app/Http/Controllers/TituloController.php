@@ -2,7 +2,6 @@
 
 namespace FlCobrancas\Http\Controllers;
 
-use FlCobrancas\Http\Requests\Request;
 use FlCobrancas\Http\Requests\TituloRequest;
 use FlCobrancas\Titulo;
 
@@ -96,5 +95,21 @@ class TituloController extends Controller
         Titulo::find($id)->delete();
 
         return redirect()->route('titulos.index')->with('alert-warning', "Título {$id} excluído com sucesso.");
+    }
+
+    /**
+     * Atualiza o status do título para RECEBIDO.
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function receive($id)
+    {
+        $titulo = Titulo::find($id);
+        $titulo->status = 'RECEBIDO';
+        $titulo->save();
+
+        //return redirect()->route('titulos.index')->with('alert-success', "Título {$id} recebido com sucesso.");
+        return 'RECEBIDO';
     }
 }

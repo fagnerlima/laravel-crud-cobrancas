@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('titulos', 'TituloController');
+Route::put('titulos/{id}/receive', 'TituloController@receive')->name('titulos.receive');
