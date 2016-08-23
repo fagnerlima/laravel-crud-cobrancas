@@ -2,6 +2,7 @@
 
 namespace FlCobrancas\Http\Controllers;
 
+use FlCobrancas\Http\Requests\Request;
 use FlCobrancas\Http\Requests\TituloRequest;
 use FlCobrancas\Titulo;
 
@@ -41,9 +42,8 @@ class TituloController extends Controller
     public function store(TituloRequest $request)
     {
         Titulo::create($request->all());
-        $request->session()->flash('success', 'Título cadastrado com sucesso.');
 
-        return redirect()->route('titulos.index');
+        return redirect()->route('titulos.index')->with('alert-success', 'Título cadastrado com sucesso.');
     }
 
     /**
@@ -81,9 +81,8 @@ class TituloController extends Controller
     public function update(TituloRequest $request, $id)
     {
         Titulo::find($id)->update($request->all());
-        $request->session()->flash('success', "Título {$id} atualizado com sucesso.");
 
-        return redirect()->route('titulos.index');
+        return redirect()->route('titulos.index')->with('alert-success', "Título {$id} atualizado com sucesso.");
     }
 
     /**
@@ -94,6 +93,8 @@ class TituloController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Titulo::find($id)->delete();
+
+        return redirect()->route('titulos.index')->with('alert-warning', "Título {$id} excluído com sucesso.");
     }
 }
