@@ -26,6 +26,26 @@
                 </div>
             @endif
 
+            {!! Form::open([
+                'method' => 'get',
+                'route' => 'titulos.index',
+                'class' => 'form_horizontal'
+            ]) !!}
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="search" class="form-control" placeholder="Pesquise títulos por descrição" name="q"
+                                   value="{{ \Request::input('q') }}"/>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div> <!--/.col-md-4 -->
+                </div> <!--/.form-group -->
+            {!! Form::close() !!}
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>

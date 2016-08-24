@@ -15,8 +15,14 @@ class TituloController extends Controller
     public function index()
     {
         $data['title'] = 'Home';
-        //$data['titulos'] = Titulo::orderBy('id')->get();
-        $data['titulos'] = Titulo::orderBy('id')->paginate(10);
+
+        // Pesquisa de títulos por descrição
+        $search = trim(strip_tags(\Request::input('q')));
+
+        if (empty($search))
+            $data['titulos'] = Titulo::orderBy('id')->paginate(10);
+        else
+            $data['titulos'] = Titulo::where('descricao', 'like', "%{$search}%")->paginate(10);
 
         return view('titulos.index', $data);
     }
