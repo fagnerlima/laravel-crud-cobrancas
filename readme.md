@@ -9,3 +9,5 @@ Tecnologias utilizadas:
 * PHP (com Laravel 5.2);
 * MySQL;
 * HTML5, CSS3 (com Bootstrap) e JavaScript (com jQuery).
+
+Deploy no Heroku: [http://arcane-castle-94163.herokuapp.com/](http://arcane-castle-94163.herokuapp.com/)

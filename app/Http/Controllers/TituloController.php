@@ -22,7 +22,7 @@ class TituloController extends Controller
         if (empty($search))
             $data['titulos'] = Titulo::orderBy('id')->paginate(10);
         else
-            $data['titulos'] = Titulo::where('descricao', 'like', "%{$search}%")->paginate(10);
+            $data['titulos'] = Titulo::where('descricao', 'like', "%{$search}%")->orderBy('id')->paginate(10);
 
         return view('titulos.index', $data);
     }
