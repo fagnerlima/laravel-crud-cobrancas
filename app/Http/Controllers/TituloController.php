@@ -15,7 +15,8 @@ class TituloController extends Controller
     public function index()
     {
         $data['title'] = 'Home';
-        $data['titulos'] = Titulo::orderBy('id')->get();
+        //$data['titulos'] = Titulo::orderBy('id')->get();
+        $data['titulos'] = Titulo::orderBy('id')->paginate(10);
 
         return view('titulos.index', $data);
     }
